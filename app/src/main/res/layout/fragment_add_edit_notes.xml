@@ -59,7 +59,7 @@
         android:layout_marginTop="16dp"
         app:cornerRadius="15dp"
         android:text="Save"
-        android:backgroundTint="@color/green"
+        android:backgroundTint="@color/teal_700"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:gravity="center"

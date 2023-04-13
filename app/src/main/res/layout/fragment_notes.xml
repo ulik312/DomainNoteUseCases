@@ -29,7 +29,7 @@
         app:icon="@drawable/pencil_square"
         android:padding="21dp"
         app:cornerRadius="15dp"
-        app:backgroundTint="@color/tea"/>
+        app:backgroundTint="@color/black"/>
 
     <ProgressBar
         android:id="@+id/progress_circular"
