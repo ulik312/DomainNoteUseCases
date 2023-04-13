@@ -1,25 +1,30 @@
 package com.sbor.domainnoteusecases.data.local
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.Query
+import androidx.room.Update
 import com.sbor.domainnoteusecases.data.model.NoteEntity
-
 
 @Dao
 interface NoteDao {
+
     //CRUD
     //C - create
     //R - read
     //U - update
     //D - delete
+
     @Insert
-    suspend fun createNotes(noteEntity: NoteEntity)
+    suspend fun createNote(noteEntity: NoteEntity)
 
     @Query("SELECT * FROM notes")
-    suspend fun getAllNotes(): List<NoteEntity>
+    suspend fun getAllNotes():List<NoteEntity>
 
     @Update
-    suspend fun editNotes(noteEntity: NoteEntity)
+    suspend fun editNote(noteEntity: NoteEntity)
 
     @Delete
-    suspend fun deleteNotes(noteEntity: NoteEntity)
+    suspend fun deleteNote(noteEntity: NoteEntity)
 }

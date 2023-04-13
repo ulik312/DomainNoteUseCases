@@ -4,6 +4,8 @@ import com.sbor.domainnoteusecases.domain.model.Note
 import com.sbor.domainnoteusecases.domain.repository.NoteRepository
 import javax.inject.Inject
 
-class DeleteNoteUseCase @Inject constructor(private val noteRepository: NoteRepository) {
-    fun deleteNote(note: Note) = noteRepository.deleteNote(note)
+class DeleteUseCase @Inject constructor
+    (private val noteRepository: NoteRepository
+) {
+    operator fun invoke (note: Note) = noteRepository.delete(note)
 }

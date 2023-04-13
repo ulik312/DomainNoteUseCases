@@ -8,25 +8,23 @@ import com.sbor.domainnoteusecases.domain.model.Note
 import com.sbor.domainnoteusecases.domain.repository.NoteRepository
 import javax.inject.Inject
 
-class NoteRepositoryImpl @Inject constructor(private val noteDao: NoteDao) : NoteRepository,
-    BaseRepository() {
-
+class NoteRepositoryImpl @Inject constructor(
+    private val noteDao: NoteDao
+): NoteRepository, BaseRepository() {
     override fun createNote(note: Note) = doRequest {
-        noteDao.createNotes(note.toEntity())
+        noteDao.createNote(note.toEntity())
     }
-
 
     override fun getAllNotes() = doRequest {
         noteDao.getAllNotes().map { it.toNote() }
     }
 
     override fun editNote(note: Note) = doRequest{
-        noteDao.editNotes(note.toEntity())
-
+        noteDao.editNote(note.toEntity())
     }
 
-    override fun deleteNote(note: Note) = doRequest {
-        noteDao.deleteNotes(note.toEntity())
+    override fun delete(note: Note) = doRequest {
+        noteDao.deleteNote(note.toEntity())
     }
 
 }
