@@ -1,8 +1,8 @@
 pluginManagement {
     repositories {
-        gradlePluginPortal()
         google()
         mavenCentral()
+        gradlePluginPortal()
     }
 }
 dependencyResolutionManagement {
@@ -12,5 +12,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "DomainNoteUseCases"
-include ':app'
+rootProject.name = "domainnoteusecases"
+include( ":app", ":data2", ":domain2")
+include(":data2")
+include(":domain2")

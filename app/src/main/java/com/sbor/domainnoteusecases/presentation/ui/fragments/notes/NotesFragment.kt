@@ -67,11 +67,11 @@ class NotesFragment : BaseFragment(R.layout.fragment_notes) {
         }
     }
 
-    private fun onClick(note: Note) {
+    private fun onClick(note: com.sbor.domainnoteusecases.domain.model.Note) {
         findNavController().navigate(R.id.addEditNotesFragment, bundleOf(EDIT to note))
     }
 
-    private fun onLongClick(note: Note) {
+    private fun onLongClick(note: com.sbor.domainnoteusecases.domain.model.Note) {
         title = note.title
         AlertDialog.Builder(context)
             .setTitle("Are you sure you want to delete $title?")

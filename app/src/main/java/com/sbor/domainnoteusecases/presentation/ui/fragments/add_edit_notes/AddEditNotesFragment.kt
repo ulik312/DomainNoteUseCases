@@ -26,7 +26,7 @@ class AddEditNotesFragment : BaseFragment(R.layout.fragment_add_edit_notes) {
 
     private val viewModel: AddNoteViewModel by viewModels()
     private val binding by viewBinding(FragmentAddEditNotesBinding::bind)
-    private var note: Note? = null
+    private var note: com.sbor.domainnoteusecases.domain.model.Note? = null
     private var noteIsNull = true
 
     override fun setupRequests() {
@@ -41,9 +41,9 @@ class AddEditNotesFragment : BaseFragment(R.layout.fragment_add_edit_notes) {
     @SuppressLint("SetTextI18n")
     private fun getNote() {
         if (arguments?.getSerializable(EDIT) == null) {
-            note = Note()
+            note = com.sbor.domainnoteusecases.domain.model.Note()
         } else {
-            note = arguments?.getSerializable(EDIT) as Note
+            note = arguments?.getSerializable(EDIT) as com.sbor.domainnoteusecases.domain.model.Note
             binding.etTitle.setText(note!!.title)
             binding.etDesc.setText(note!!.descriptions)
             binding.btnSave.text = "Edit"

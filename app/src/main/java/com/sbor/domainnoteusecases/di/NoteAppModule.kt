@@ -22,15 +22,15 @@ object NoteAppModule {
         @ApplicationContext context: Context,
     ) = Room.databaseBuilder(
         context,
-        NoteDatabase::class.java,
+        com.sbor.domainnoteusecases.data.model.NoteDatabase::class.java,
         "note_db"
     ).allowMainThreadQueries().build()
 
     @Provides
-    fun provideNoteDao(noteDatabase: NoteDatabase) = noteDatabase.noteDao()
+    fun provideNoteDao(noteDatabase: com.sbor.domainnoteusecases.data.model.NoteDatabase) = noteDatabase.noteDao()
 
     @Provides
-    fun provideNoteRepository(noteDao: NoteDao): NoteRepository {
-        return  NoteRepositoryImpl(noteDao)
+    fun provideNoteRepository(noteDao: com.sbor.domainnoteusecases.data.local.NoteDao): com.sbor.domainnoteusecases.domain.repository.NoteRepository {
+        return com.sbor.domainnoteusecases.data.repository.NoteRepositoryImpl(noteDao)
     }
 }

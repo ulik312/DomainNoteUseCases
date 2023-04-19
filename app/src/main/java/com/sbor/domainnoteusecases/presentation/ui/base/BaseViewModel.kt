@@ -10,21 +10,21 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
 abstract class BaseViewModel : ViewModel() {
-    protected fun <T> Flow<Resource<T>>.collectData(_state: MutableStateFlow<UIState<T>>) {
+    protected fun <T> Flow<com.sbor.domainnoteusecases.domain.utils.Resource<T>>.collectData(_state: MutableStateFlow<UIState<T>>) {
         viewModelScope.launch(Dispatchers.IO) {
             this@collectData.collect { res ->
                 when (res) {
-                    is Resource.Error -> {
+                    is com.sbor.domainnoteusecases.domain.utils.Resource.Error -> {
                         if (res.message != null) {
-                            _state.value = UIState.Error(res.message)
+                            _state.value = UIState.Error(res.message!!)
                         }
                     }
-                    is Resource.Loading -> {
+                    is com.sbor.domainnoteusecases.domain.utils.Resource.Loading -> {
                         _state.value = UIState.Loading()
                     }
-                    is Resource.Success -> {
+                    is com.sbor.domainnoteusecases.domain.utils.Resource.Success -> {
                         if (res.data != null) {
-                            _state.value = UIState.Success(res.data)
+                            _state.value = UIState.Success(res.data!!)
                         }
                     }
                 }

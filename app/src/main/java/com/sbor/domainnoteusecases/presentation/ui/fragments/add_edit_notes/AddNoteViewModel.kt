@@ -12,8 +12,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AddNoteViewModel @Inject constructor(
-    private val createNoteUseCase: CreateNoteUseCase,
-    private val editNoteUseCase: EditNoteUseCase,
+    private val createNoteUseCase: com.sbor.domainnoteusecases.domain.usecases.CreateNoteUseCase,
+    private val editNoteUseCase: com.sbor.domainnoteusecases.domain.usecases.EditNoteUseCase,
 ) : BaseViewModel() {
 
     private val _addNoteState = MutableStateFlow<UIState<Unit>>(UIState.Empty())
@@ -22,11 +22,11 @@ class AddNoteViewModel @Inject constructor(
     private val _editNoteState = MutableStateFlow<UIState<Unit>>(UIState.Empty())
     val editNoteState = _editNoteState.asStateFlow()
 
-    fun createNote(note: Note) {
+    fun createNote(note: com.sbor.domainnoteusecases.domain.model.Note) {
         createNoteUseCase(note).collectData(_addNoteState)
     }
 
-    fun editNote(note: Note) {
+    fun editNote(note: com.sbor.domainnoteusecases.domain.model.Note) {
         editNoteUseCase(note).collectData(_editNoteState)
     }
 }
